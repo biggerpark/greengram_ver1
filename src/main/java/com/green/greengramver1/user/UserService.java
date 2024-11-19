@@ -1,0 +1,16 @@
+package com.green.greengramver1.user;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class UserService {
+    private final UserMapper mapper;
+
+
+
+}
