@@ -5,7 +5,7 @@
 
 
 <mapper namespace="com.green.greengramver1.user.UserMapper">
-    <insert id="insUser">
+    <insert id="insUser" useGeneratedKeys="true" keyProperty="userId"> <!-- Insert 하고 pk값을 멤버필드에 넣어줌, 대신 조건이 pk가 1개여야하고, pk가 auto_increment 이어야 한다. -->
         INSERT INTO user
         SET  uid=#{uid}
             ,nick_name=#{nickName}

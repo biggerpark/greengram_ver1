@@ -1,22 +1,38 @@
 # spring.application.name=madang properties 에서의 코드
 #yml = yaml 확장자는 두개 아무거나 쓰면된다. 이 확장자를 쓰면 이전에 board 에서 쓰던것처럼 길게 쓸 필요가 없고, 줄여 쓸 수 있다.
 
+#custom property (내가 만든 속성, MyFileUtils 객체에 사용할 속성), 절대경로(Absolute Path)를 써줄것이다.
+file:
+  directory: D:/pjh/GreenGramVer1/greengram_ver1
+
+#Base URL setting (controller 에서 url에 자동으로 붙도록 세팅해주는것)
+#server:
+# servlet:
+#   context-path: /api
 
 spring:
   application:
     name: GreenGramVer1
   # yml(yaml)에서는 무조건 ':' 이후 띄어쓰기 필수
   # ':' 은  properties 에서 '.' 과 같은 역할, 하위항목임을 나타내려면 엔터로는 안되고, 탭이나 스페이스를 해야한다.
+
+  #DB SETTING  웹서버를 만드려면 무조건 DB SETTING 을 해줘야한다.
   datasource:
-    url: jdbc:mariadb://localhost/greengram_ver1
+    url: jdbc:mariadb://localhost/greengram_ver1  #DB 이름만 바꿔주면 된다.
     username: root
     password: green502
 
+  servlet:
+    multipart:
+      max-file-size: 10MB #max-file-size 는 멤버필드평이다. 그래서 maxFileSize 로 적어줘도 된다.
+
+
 
 #주소 값이 중복된 코드를 줄여줌
-
+#mybatis setting
 mybatis:
   mapper-locations: xml/**/*.xml
+
 
 springdoc:
   api-docs:
@@ -24,6 +40,7 @@ springdoc:
   swagger-ui:
     default-model-expand-depth: 10 # 이 수치는 2이면 충분하다고 하심
     default-models-expand-depth: -1
-    path: /swagger #실제 swagger 를 사용할때 문서의 url 을 http://localhost:8080/swagger 이렇게 입력을 하면 바로 swagger 사이트에 들어가짐.
     operations-sorter: method
-
+    path: /swagger #실제 swagger 를 사용할때 문서의 url 을 http://localhost:8080/swagger 이렇게 입력을 하면 바로 swagger 사이트에 들어가짐.
+  cache:
+    disabled: true
