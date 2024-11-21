@@ -22,6 +22,7 @@ public class MyFileUtils {
     //uploadPath 에 무엇을 넣을지 yaml 에 입력해주자.
     //@Value("${file.directory}")를 사용하면, yaml 파일에 있는
     //file.directory 속성에 저장된 값을  생성자 호출할 때 값을 넣어주면서, MyFileUtils 가 빈등록이 된다.
+    // 생성자의 @Value("${file.directory}")는 **스프링의 의존성 주입(DI)**을 활용해, application.yml 또는 application.properties 파일에서 설정된 값을 자동으로 읽어옵니다.
     public MyFileUtils(@Value("${file.directory}") String uploadPath) { // 생성자 자동생성 에노테이션 안적어준 이유는 뭔가를 더 적어야해서이다.
         log.info("MyFileUtils- 생성자 : {}", uploadPath); // 실제로 빈등록이 되어있으면, 생성자가 자동 호출되므로, uploadPath 가  자동으로 호출되는지 확인하는 용
         this.uploadPath = uploadPath;
@@ -64,7 +65,7 @@ public class MyFileUtils {
     }
 
     public String makeRandomFileName(MultipartFile file){
-        return makeRandomFileName(file.getOriginalFilename()); // public String makeRandomFileName(String originalFileName) 이 메소드를 이용한 것.
+        return makeRandomFileName(file.getOriginalFilename()); // public String makeRandomFileName(String originalFileName) 이 메소드를 이용한 것. 랜덤한 이름과 확장자를 붙여서 리턴시켜줌
     }
 
 }

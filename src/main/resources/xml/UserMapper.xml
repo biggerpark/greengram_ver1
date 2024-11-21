@@ -13,6 +13,12 @@
             ,pic=#{pic}
     </insert>
 
+    <select id="selUserForSignIn">
+        SELECT user_id as userId,nick_name as nickName, pic, upw
+        FROM user
+        WHERE uid=#{uid}
+    </select>
+
 
 
 
